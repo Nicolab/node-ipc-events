@@ -45,14 +45,15 @@ function myCallback(data) {
   console.log(data.hello); // Hello from "a"!
 }
 
+// Add listener, defined to be triggered "once"
 b.once('say-hello', myCallback);
 
-// myCallback() invoked and the listener is removed
+// myCallback() is invoked and the listener is removed
 a.send('say-hello', {
   hello: 'Hello from "a"!'
 });
 
-// myCallback() not called, it is no longer listening event
+// myCallback() is not called because it is no longer listening on this event
 a.send('say-hello', {
   hello: 'Hello from "a"!'
 });
