@@ -28,7 +28,7 @@ function IpcEvents(proc) {
  * Register a new event listener for the given IPC event.
  *
  * @param {string} event      Name of the IPC event.
- * @param {functon} fn        Callback function.
+ * @param {function} fn       Callback function.
  * @return {IpcEvents}
  * @api public
  */
@@ -47,7 +47,7 @@ IpcEvents.prototype.on = function on(event, fn) {
  * Add an event listener that's only called once.
  *
  * @param {string} event      Name of the IPC event.
- * @param {functon} fn        Callback function.
+ * @param {function} fn        Callback function.
  * @return {IpcEvents}
  * @api public
  */
