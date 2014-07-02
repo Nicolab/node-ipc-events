@@ -1,0 +1,38 @@
+{
+  "name": "ipc-events",
+  "version": "1.0.0",
+  "description": "Inter process (IPC) event emitter",
+  "keywords": [
+    "ipc",
+    "process",
+    "events",
+    "eventemitter"
+  ],
+  "main": "index.js",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "devDependencies": {
+    "unit.js": ">= 0.1.0 < 1.0.0"
+  },
+  "scripts": {
+    "test": "unitjs test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Nicolab/node-ipc-events.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Nicolab/node-ipc-events/issues"
+  },
+  "author": {
+    "name":"Nicolas Tallefourtane",
+    "url":"http://nicolab.net"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/Nicolab/node-ipc-events/blob/master/LICENSE"
+    }
+  ]
+}
