@@ -107,6 +107,11 @@ IpcEvents.prototype.removeListener = function removeListener(event, fn) {
     }
   }
 
+  // re-index
+  this._events[event] = this._events[event].filter(function(a) {
+    return typeof a !== 'undefined';
+  });
+
   return this;
 };
 
@@ -116,7 +121,7 @@ IpcEvents.prototype.removeListener = function removeListener(event, fn) {
  * @private
  */
 IpcEvents.prototype._eventHandler = function _eventHandler(data) {
-  var fn, ev;
+  var fn, ev, evs;
 
   data = data || {};
 
@@ -129,9 +134,11 @@ IpcEvents.prototype._eventHandler = function _eventHandler(data) {
   data._IPCE_event = null;
   delete data._IPCE_event;
 
-  for(var i in this._events[ev]) {
+  evs = this._events[ev];
 
-    fn = this._events[ev][i];
+  for(var i = 0, ln = evs.length; i < ln; i++) {
+
+    fn = evs[i];
 
     if (fn._IPCE_once) {
       this.removeListener(ev, fn);
