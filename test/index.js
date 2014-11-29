@@ -157,12 +157,17 @@ describe('IpcEvents', function(){
 
   it('`once` create a listener executed once', function(done){
 
-    var listener = test.spy();
+    var listenerOnce = test.spy();
+    var listener     = test.spy();
 
      test
       .given('listener', function(){
         test
-          .object(ipc.once('pong', listener))
+          .object(ipc.once('pong', listenerOnce))
+            .isInstanceOf(IpcEvents)
+            .isIdenticalTo(ipc)
+
+          .object(ipc.on('pong', listener))
             .isInstanceOf(IpcEvents)
             .isIdenticalTo(ipc)
         ;
@@ -183,12 +188,25 @@ describe('IpcEvents', function(){
       .then('test listener (allow time to communicate)').wait(5, function() {
 
         test
-          .bool(listener.calledOnce)
+          .bool(listenerOnce.calledOnce)
+            .isTrue()
+
+          .object(listenerOnce.firstCall.args[0])
+            .is({
+              data: { message: 'ping 1' }
+            })
+
+          .bool(listener.calledTwice)
             .isTrue()
 
           .object(listener.firstCall.args[0])
             .is({
               data: { message: 'ping 1' }
+            })
+
+          .object(listener.secondCall.args[0])
+            .is({
+              data: { message: 'ping 2' }
             })
         ;
 
