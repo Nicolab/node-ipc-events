@@ -282,7 +282,8 @@ describe('IpcEvents', function(){
             .isIdenticalTo(a)
             .isNotIdenticalTo(c)
 
-          .function(ipc.listeners('pong')[2])
+          // `b` is removed because once(), so the listeners stack is re-indexed
+          .function(ipc.listeners('pong')[1])
             .isIdenticalTo(c)
         ;
 
