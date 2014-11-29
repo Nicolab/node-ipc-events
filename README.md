@@ -1,5 +1,8 @@
 # IPC event emitter
 
+[![Actual version published on NPM](https://badge.fury.io/js/ipc-events.png)](https://www.npmjs.org/package/ipc-events)
+[![npm module downloads per month](http://img.shields.io/npm/dm/ipc-events.svg)](https://www.npmjs.org/package/ipc-events)
+
 Minimal and fast event emitter that communicate with other process through IPC.
 
 ## Getting started
@@ -82,7 +85,7 @@ a.removeListener('say-hello', myCallback);
 
 ## Unit tests
 
-`ipc-events` is unit tested with [Unit.js](https://github.com/unitjs/unit.js)
+`ipc-events` is unit tested with [Unit.js](http://unitjs.com)
 
 Run the tests
 ```shell
@@ -94,7 +97,7 @@ npm test
 
 ## LICENSE
 
-[MIT](https://github.com/Nicolab/node-ipc-events/blob/master/LICENSE)
+[MIT](https://github.com/Nicolab/node-ipc-events/blob/master/LICENSE) (c) 2014, Nicolas Tallefourtane.
 
 
 ## Author
