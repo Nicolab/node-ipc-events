@@ -1,6 +1,6 @@
 {
   "name": "ipc-events",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Inter process (IPC) event emitter",
   "keywords": [
     "ipc",
@@ -13,10 +13,11 @@
     "node": ">= 0.10.0"
   },
   "devDependencies": {
-    "unit.js": ">= 0.1.0 < 1.0.0"
+    "mocha": "^2.0.1",
+    "unit.js": ">= 1.0.0 < 2.0.0"
   },
   "scripts": {
-    "test": "unitjs test/index.js"
+    "test": "mocha test/index.js"
   },
   "repository": {
     "type": "git",
@@ -26,8 +27,8 @@
     "url": "https://github.com/Nicolab/node-ipc-events/issues"
   },
   "author": {
-    "name":"Nicolas Tallefourtane",
-    "url":"http://nicolab.net"
+    "name": "Nicolas Tallefourtane",
+    "url": "http://nicolab.net"
   },
   "licenses": [
     {
