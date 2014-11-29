@@ -6,6 +6,8 @@
  * @license MIT https://github.com/Nicolab/node-ipc-events/blob/master/LICENSE
  */
 
+'use strict';
+
 /**
  * IpcEvents
  * @param {ChildProcess} proc ChildProcess object
@@ -27,7 +29,7 @@ function IpcEvents(proc) {
 /**
  * Register a new event listener for the given IPC event.
  *
- * @param {string} event      Name of the IPC event.
+ * @param {string}   event    Name of the IPC event.
  * @param {function} fn       Callback function.
  * @return {IpcEvents}
  * @api public
@@ -46,8 +48,8 @@ IpcEvents.prototype.on = function on(event, fn) {
 /**
  * Add an event listener that's only called once.
  *
- * @param {string} event      Name of the IPC event.
- * @param {function} fn        Callback function.
+ * @param {string}   event    Name of the IPC event.
+ * @param {function} fn       Callback function.
  * @return {IpcEvents}
  * @api public
  */
@@ -98,7 +100,7 @@ IpcEvents.prototype.removeListener = function removeListener(event, fn) {
     return this;
   }
 
-  for (var i = 0, length = this._events[event].length; i < length; i++) {
+  for (var i = 0, ln = this._events[event].length; i < ln; i++) {
     if (this._events[event][i] === fn) {
       this._events[event][i] = null;
       delete this._events[event][i];
@@ -114,6 +116,7 @@ IpcEvents.prototype.removeListener = function removeListener(event, fn) {
  * @private
  */
 IpcEvents.prototype._eventHandler = function _eventHandler(data) {
+  var fn, ev;
 
   data = data || {};
 
@@ -121,15 +124,14 @@ IpcEvents.prototype._eventHandler = function _eventHandler(data) {
     return;
   }
 
-  var ev = data._IPCE_event;
+  ev = data._IPCE_event;
 
   data._IPCE_event = null;
-
   delete data._IPCE_event;
 
   for(var i in this._events[ev]) {
 
-    var fn = this._events[ev][i];
+    fn = this._events[ev][i];
 
     if (fn._IPCE_once) {
       this.removeListener(ev, fn);
